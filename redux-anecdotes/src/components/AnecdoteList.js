@@ -3,10 +3,10 @@ import { voteAnecdote } from '../reducers/anecdoteReducer'
 import { setMessage, removeMessage } from '../reducers/notificationReducer'
 
 const AnecdoteList = (props) => {
+  const dispatch = useDispatch()
   const anecdotes = useSelector(({ filter, anecdotes }) => {
     return anecdotes.filter(a => a.content.toLowerCase().includes(filter.toLowerCase()))
   })
-  const dispatch = useDispatch()
 
   const vote = (anecdote) => {
     dispatch(voteAnecdote(anecdote))
@@ -15,7 +15,6 @@ const AnecdoteList = (props) => {
       dispatch(removeMessage())
     }, 5000)
   }
-
 
   return (
     <div>
